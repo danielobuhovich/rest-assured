@@ -329,9 +329,9 @@ public class DadataCountries {
     @Test(description = "Request with get")
     public  void SearchDadataCountry_Get(){
 
-        responseBody=sendReqAndGetRespDadataSuggestCountries_NoHeaders(defaultBody);
+        responseBody=sendReqAndGetRespDadataSuggestCountries_Get(defaultBody);
 
-        Assert.assertEquals(responseBody.getStatusCode(),415);
+        Assert.assertEquals(responseBody.getStatusCode(),405);
     }
 
     @Test(description = "Request with max request body length")

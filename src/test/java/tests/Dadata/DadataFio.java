@@ -3,6 +3,7 @@ package tests.Dadata;
 import com.jayway.jsonpath.JsonPath;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.hamcrest.Matchers;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -519,6 +520,138 @@ public class DadataFio {
         responseBody=sendReqAndGetRespDadataSuggestFio_Get(defaultBody);
 
         Assert.assertEquals(responseBody.getStatusCode(),405);
+    }
+
+    @Test(description = "Positive test of FIO searching in dadata suggestions with parts(name)")
+    public  void SearchDadataFIO_PartsName(){
+
+        requestBody="{\n" +
+                "  \"query\": \"Иван\",\n" +
+                "  \"parts\": [\"NAME\"]\n" +
+                "}";
+
+        responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
+
+        Assert.assertEquals(responseBody.getStatusCode(),200);
+
+        jsonBody=responseBody.asString();
+        ArrayList<String> names=JsonPath.read(jsonBody,"$..name");
+
+        String resultArraylist = String.join(",", names.toArray(new String[0]));
+
+        Assert.assertTrue(resultArraylist.contains("Иван"));
+    }
+
+    @Test(description = "Positive test of FIO searching in dadata suggestions with parts(surname)")
+    public  void SearchDadataFIO_PartsSurname(){
+
+        requestBody="{\n" +
+                "  \"query\": \"Иван\",\n" +
+                "  \"parts\": [\"SURNAME\"]\n" +
+                "}";
+
+        responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
+
+        Assert.assertEquals(responseBody.getStatusCode(),200);
+
+        jsonBody=responseBody.asString();
+        ArrayList<String> surnames=JsonPath.read(jsonBody,"$..surname");
+
+        String resultArraylist = String.join(",", surnames.toArray(new String[0]));
+
+        Assert.assertTrue(resultArraylist.contains("Иван"));
+    }
+
+    @Test(description = "Positive test of FIO searching in dadata suggestions with parts(surname)")
+    public  void SearchDadataFIO_PartsPatronymic(){
+
+        requestBody="{\n" +
+                "  \"query\": \"Иван\",\n" +
+                "  \"parts\": [\"PATRONYMIC\"]\n" +
+                "}";
+
+        responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
+
+        Assert.assertEquals(responseBody.getStatusCode(),200);
+
+        jsonBody=responseBody.asString();
+        ArrayList<String> patronymics=JsonPath.read(jsonBody,"$..patronymic");
+
+        String resultArraylist = String.join(",", patronymics.toArray(new String[0]));
+
+        Assert.assertTrue(resultArraylist.contains("Иван"));
+    }
+
+    @Test(description = "Request with empty parts in request body")
+    public  void SearchDadataFIO_EmptyParts(){
+
+        requestBody="{\n" +
+                "  \"query\": \"Иван\",\n" +
+                "  \"parts\": []\n" +
+                "}";
+
+        responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
+
+        Assert.assertEquals(responseBody.getStatusCode(),200);
+
+        jsonBody=responseBody.asString();
+        ArrayList<String> values=JsonPath.read(jsonBody,"$..unrestricted_value");
+
+        Assert.assertTrue(values.contains("Иван"));
+    }
+
+    @Test(description = "Request with parts in lower case in request body")
+    public  void SearchDadataFIO_LowCaseParts(){
+
+        requestBody="{\n" +
+                "  \"query\": \"Иван\",\n" +
+                "  \"parts\": [\"surname\"]\n" +
+                "}";
+
+        responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
+
+        Assert.assertEquals(responseBody.getStatusCode(),200);
+
+        jsonBody=responseBody.asString();
+        ArrayList<String> names=JsonPath.read(jsonBody,"$..name");
+        ArrayList<String> surnames=JsonPath.read(jsonBody,"$..surname");
+        ArrayList<String> patronymics=JsonPath.read(jsonBody,"$..patronymic");
+
+        String namesString = String.join(",", names.toArray(new String[0]));
+        String surnamesString = String.join(",", surnames.toArray(new String[0]));
+        String patronymicsString = String.join(",", patronymics.toArray(new String[0]));
+
+
+        Assert.assertFalse(namesString.contains("Иван"));
+        Assert.assertTrue(surnamesString.contains("Иван"));
+        Assert.assertFalse(patronymicsString.contains("Иван"));
+    }
+
+    @Test(description = "Request with incorrect parts in request body")
+    public  void SearchDadataFIO_IncParts(){
+
+        requestBody="{\n" +
+                "  \"query\": \"Иван\",\n" +
+                "  \"parts\": [\"secondname\"]\n" +
+                "}";
+
+        responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
+
+        Assert.assertEquals(responseBody.getStatusCode(),200);
+
+        jsonBody=responseBody.asString();
+        ArrayList<String> names=JsonPath.read(jsonBody,"$..name");
+        ArrayList<String> surnames=JsonPath.read(jsonBody,"$..surname");
+        ArrayList<String> patronymics=JsonPath.read(jsonBody,"$..patronymic");
+
+        String namesString = String.join(",", names.toArray(new String[0]));
+        String surnamesString = String.join(",", surnames.toArray(new String[0]));
+        String patronymicsString = String.join(",", patronymics.toArray(new String[0]));
+
+
+        Assert.assertFalse(namesString.contains("Иван"));
+        Assert.assertTrue(surnamesString.contains("Иван"));
+        Assert.assertFalse(patronymicsString.contains("Иван"));
     }
 
 
