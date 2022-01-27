@@ -74,6 +74,8 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.jsonPath().getString("[0].fias_code"),"77000000000000028360004");
         Assert.assertEquals(responseBody.jsonPath().getString("[0].okato"),"45280583000");
         Assert.assertEquals(responseBody.jsonPath().getString("[0].oktmo"),"45362000");
+        Assert.assertEquals(responseBody.jsonPath().getString("[0].tax_office"),"7715");
+        Assert.assertEquals(responseBody.jsonPath().getString("[0].tax_office_legal"),"7715");
     }
 
     @Test
@@ -121,6 +123,8 @@ public class DadadataCleanerAddress {
         Assert.assertNull(responseBody.jsonPath().getString("[0].fias_code"));
         Assert.assertNull(responseBody.jsonPath().getString("[0].okato"));
         Assert.assertNull(responseBody.jsonPath().getString("[0].oktmo"));
+        Assert.assertNull(responseBody.jsonPath().getString("[0].tax_office"));
+        Assert.assertNull(responseBody.jsonPath().getString("[0].tax_office_legal"));
     }
 
     @Test
@@ -165,6 +169,8 @@ public class DadadataCleanerAddress {
         requestBody="[\"vcr ce[jycrf 11/-89\"]";
 
         responseBody=sendReqAndGetRespDadataCleanerAddress(requestBody);
+
+//        Assert.assertEquals(responseBody.jsonPath().getString("[0].unparsed_parts"),"vcr ce[jycrf 11/-89");
 
         Assert.assertEquals(responseBody.jsonPath().getString("[0].country"),"Россия");
         Assert.assertEquals(responseBody.jsonPath().getString("[0].region"),"Москва");
