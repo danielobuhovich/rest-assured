@@ -1,0 +1,1216 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "array",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": [],
+  "examples": [
+    [
+      {
+        "source": "мск сухонска 11/-89",
+        "result": "г Москва, ул Сухонская, д 11, кв 89",
+        "postal_code": "127642",
+        "country": "Россия",
+        "country_iso_code": "RU",
+        "federal_district": "Центральный",
+        "region_fias_id": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
+        "region_kladr_id": "7700000000000",
+        "region_iso_code": "RU-MOW",
+        "region_with_type": "г Москва",
+        "region_type": "г",
+        "region_type_full": "город",
+        "region": "Москва",
+        "area_fias_id": null,
+        "area_kladr_id": null,
+        "area_with_type": null,
+        "area_type": null,
+        "area_type_full": null,
+        "area": null,
+        "city_fias_id": null,
+        "city_kladr_id": null,
+        "city_with_type": null,
+        "city_type": null,
+        "city_type_full": null,
+        "city": null,
+        "city_area": "Северо-восточный",
+        "city_district_fias_id": null,
+        "city_district_kladr_id": null,
+        "city_district_with_type": "р-н Северное Медведково",
+        "city_district_type": "р-н",
+        "city_district_type_full": "район",
+        "city_district": "Северное Медведково",
+        "settlement_fias_id": null,
+        "settlement_kladr_id": null,
+        "settlement_with_type": null,
+        "settlement_type": null,
+        "settlement_type_full": null,
+        "settlement": null,
+        "street_fias_id": "95dbf7fb-0dd4-4a04-8100-4f6c847564b5",
+        "street_kladr_id": "77000000000283600",
+        "street_with_type": "ул Сухонская",
+        "street_type": "ул",
+        "street_type_full": "улица",
+        "street": "Сухонская",
+        "house_fias_id": "5ee84ac0-eb9a-4b42-b814-2f5f7c27c255",
+        "house_kladr_id": "7700000000028360004",
+        "house_type": "д",
+        "house_type_full": "дом",
+        "house": "11",
+        "block_type": null,
+        "block_type_full": null,
+        "block": null,
+        "entrance": null,
+        "floor": null,
+        "flat_fias_id": "f26b876b-6857-4951-b060-ec6559f04a9a",
+        "flat_type": "кв",
+        "flat_type_full": "квартира",
+        "flat": "89",
+        "flat_area": "34.6",
+        "square_meter_price": "214887",
+        "flat_price": "7435091",
+        "postal_box": null,
+        "fias_id": "f26b876b-6857-4951-b060-ec6559f04a9a",
+        "fias_code": "77000000000000028360004",
+        "fias_level": "9",
+        "fias_actuality_state": "0",
+        "kladr_id": "7700000000028360004",
+        "capital_marker": "0",
+        "okato": "45280583000",
+        "oktmo": "45362000",
+        "tax_office": "7715",
+        "tax_office_legal": "7715",
+        "timezone": "UTC+3",
+        "geo_lat": "55.8782557",
+        "geo_lon": "37.65372",
+        "beltway_hit": "IN_MKAD",
+        "beltway_distance": null,
+        "qc_geo": 0,
+        "qc_complete": 0,
+        "qc_house": 2,
+        "qc": 0,
+        "unparsed_parts": null,
+        "metro": [
+          {
+            "distance": 1.1,
+            "line": "Калужско-Рижская",
+            "name": "Бабушкинская"
+          },
+          {
+            "distance": 1.2,
+            "line": "Калужско-Рижская",
+            "name": "Медведково"
+          },
+          {
+            "distance": 2.5,
+            "line": "Калужско-Рижская",
+            "name": "Свиблово"
+          }
+        ]
+      }
+    ]
+  ],
+  "additionalItems": true,
+  "items": {
+    "$id": "#/items",
+    "anyOf": [
+      {
+        "$id": "#/items/anyOf/0",
+        "type": "object",
+        "title": "The first anyOf schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "source": "мск сухонска 11/-89",
+            "result": "г Москва, ул Сухонская, д 11, кв 89",
+            "postal_code": "127642",
+            "country": "Россия",
+            "country_iso_code": "RU",
+            "federal_district": "Центральный",
+            "region_fias_id": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
+            "region_kladr_id": "7700000000000",
+            "region_iso_code": "RU-MOW",
+            "region_with_type": "г Москва",
+            "region_type": "г",
+            "region_type_full": "город",
+            "region": "Москва",
+            "area_fias_id": null,
+            "area_kladr_id": null,
+            "area_with_type": null,
+            "area_type": null,
+            "area_type_full": null,
+            "area": null,
+            "city_fias_id": null,
+            "city_kladr_id": null,
+            "city_with_type": null,
+            "city_type": null,
+            "city_type_full": null,
+            "city": null,
+            "city_area": "Северо-восточный",
+            "city_district_fias_id": null,
+            "city_district_kladr_id": null,
+            "city_district_with_type": "р-н Северное Медведково",
+            "city_district_type": "р-н",
+            "city_district_type_full": "район",
+            "city_district": "Северное Медведково",
+            "settlement_fias_id": null,
+            "settlement_kladr_id": null,
+            "settlement_with_type": null,
+            "settlement_type": null,
+            "settlement_type_full": null,
+            "settlement": null,
+            "street_fias_id": "95dbf7fb-0dd4-4a04-8100-4f6c847564b5",
+            "street_kladr_id": "77000000000283600",
+            "street_with_type": "ул Сухонская",
+            "street_type": "ул",
+            "street_type_full": "улица",
+            "street": "Сухонская",
+            "house_fias_id": "5ee84ac0-eb9a-4b42-b814-2f5f7c27c255",
+            "house_kladr_id": "7700000000028360004",
+            "house_type": "д",
+            "house_type_full": "дом",
+            "house": "11",
+            "block_type": null,
+            "block_type_full": null,
+            "block": null,
+            "entrance": null,
+            "floor": null,
+            "flat_fias_id": "f26b876b-6857-4951-b060-ec6559f04a9a",
+            "flat_type": "кв",
+            "flat_type_full": "квартира",
+            "flat": "89",
+            "flat_area": "34.6",
+            "square_meter_price": "214887",
+            "flat_price": "7435091",
+            "postal_box": null,
+            "fias_id": "f26b876b-6857-4951-b060-ec6559f04a9a",
+            "fias_code": "77000000000000028360004",
+            "fias_level": "9",
+            "fias_actuality_state": "0",
+            "kladr_id": "7700000000028360004",
+            "capital_marker": "0",
+            "okato": "45280583000",
+            "oktmo": "45362000",
+            "tax_office": "7715",
+            "tax_office_legal": "7715",
+            "timezone": "UTC+3",
+            "geo_lat": "55.8782557",
+            "geo_lon": "37.65372",
+            "beltway_hit": "IN_MKAD",
+            "beltway_distance": null,
+            "qc_geo": 0,
+            "qc_complete": 0,
+            "qc_house": 2,
+            "qc": 0,
+            "unparsed_parts": null,
+            "metro": [
+              {
+                "distance": 1.1,
+                "line": "Калужско-Рижская",
+                "name": "Бабушкинская"
+              },
+              {
+                "distance": 1.2,
+                "line": "Калужско-Рижская",
+                "name": "Медведково"
+              },
+              {
+                "distance": 2.5,
+                "line": "Калужско-Рижская",
+                "name": "Свиблово"
+              }
+            ]
+          }
+        ],
+        "required": [
+          "source",
+          "result",
+          "postal_code",
+          "country",
+          "country_iso_code",
+          "federal_district",
+          "region_fias_id",
+          "region_kladr_id",
+          "region_iso_code",
+          "region_with_type",
+          "region_type",
+          "region_type_full",
+          "region",
+          "area_fias_id",
+          "area_kladr_id",
+          "area_with_type",
+          "area_type",
+          "area_type_full",
+          "area",
+          "city_fias_id",
+          "city_kladr_id",
+          "city_with_type",
+          "city_type",
+          "city_type_full",
+          "city",
+          "city_area",
+          "city_district_fias_id",
+          "city_district_kladr_id",
+          "city_district_with_type",
+          "city_district_type",
+          "city_district_type_full",
+          "city_district",
+          "settlement_fias_id",
+          "settlement_kladr_id",
+          "settlement_with_type",
+          "settlement_type",
+          "settlement_type_full",
+          "settlement",
+          "street_fias_id",
+          "street_kladr_id",
+          "street_with_type",
+          "street_type",
+          "street_type_full",
+          "street",
+          "house_fias_id",
+          "house_kladr_id",
+          "house_type",
+          "house_type_full",
+          "house",
+          "block_type",
+          "block_type_full",
+          "block",
+          "entrance",
+          "floor",
+          "flat_fias_id",
+          "flat_type",
+          "flat_type_full",
+          "flat",
+          "flat_area",
+          "square_meter_price",
+          "flat_price",
+          "postal_box",
+          "fias_id",
+          "fias_code",
+          "fias_level",
+          "fias_actuality_state",
+          "kladr_id",
+          "capital_marker",
+          "okato",
+          "oktmo",
+          "tax_office",
+          "tax_office_legal",
+          "timezone",
+          "geo_lat",
+          "geo_lon",
+          "beltway_hit",
+          "beltway_distance",
+          "qc_geo",
+          "qc_complete",
+          "qc_house",
+          "qc",
+          "unparsed_parts",
+          "metro"
+        ],
+        "properties": {
+          "source": {
+            "$id": "#/items/anyOf/0/properties/source",
+            "type": "string",
+            "title": "The source schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "мск сухонска 11/-89"
+            ]
+          },
+          "result": {
+            "$id": "#/items/anyOf/0/properties/result",
+            "type": "string",
+            "title": "The result schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "г Москва, ул Сухонская, д 11, кв 89"
+            ]
+          },
+          "postal_code": {
+            "$id": "#/items/anyOf/0/properties/postal_code",
+            "type": "string",
+            "title": "The postal_code schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "127642"
+            ]
+          },
+          "country": {
+            "$id": "#/items/anyOf/0/properties/country",
+            "type": "string",
+            "title": "The country schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Россия"
+            ]
+          },
+          "country_iso_code": {
+            "$id": "#/items/anyOf/0/properties/country_iso_code",
+            "type": "string",
+            "title": "The country_iso_code schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "RU"
+            ]
+          },
+          "federal_district": {
+            "$id": "#/items/anyOf/0/properties/federal_district",
+            "type": "string",
+            "title": "The federal_district schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Центральный"
+            ]
+          },
+          "region_fias_id": {
+            "$id": "#/items/anyOf/0/properties/region_fias_id",
+            "type": "string",
+            "title": "The region_fias_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "0c5b2444-70a0-4932-980c-b4dc0d3f02b5"
+            ]
+          },
+          "region_kladr_id": {
+            "$id": "#/items/anyOf/0/properties/region_kladr_id",
+            "type": "string",
+            "title": "The region_kladr_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "7700000000000"
+            ]
+          },
+          "region_iso_code": {
+            "$id": "#/items/anyOf/0/properties/region_iso_code",
+            "type": "string",
+            "title": "The region_iso_code schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "RU-MOW"
+            ]
+          },
+          "region_with_type": {
+            "$id": "#/items/anyOf/0/properties/region_with_type",
+            "type": "string",
+            "title": "The region_with_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "г Москва"
+            ]
+          },
+          "region_type": {
+            "$id": "#/items/anyOf/0/properties/region_type",
+            "type": "string",
+            "title": "The region_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "г"
+            ]
+          },
+          "region_type_full": {
+            "$id": "#/items/anyOf/0/properties/region_type_full",
+            "type": "string",
+            "title": "The region_type_full schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "город"
+            ]
+          },
+          "region": {
+            "$id": "#/items/anyOf/0/properties/region",
+            "type": "string",
+            "title": "The region schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Москва"
+            ]
+          },
+          "area_fias_id": {
+            "$id": "#/items/anyOf/0/properties/area_fias_id",
+            "type": "null",
+            "title": "The area_fias_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "area_kladr_id": {
+            "$id": "#/items/anyOf/0/properties/area_kladr_id",
+            "type": "null",
+            "title": "The area_kladr_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "area_with_type": {
+            "$id": "#/items/anyOf/0/properties/area_with_type",
+            "type": "null",
+            "title": "The area_with_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "area_type": {
+            "$id": "#/items/anyOf/0/properties/area_type",
+            "type": "null",
+            "title": "The area_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "area_type_full": {
+            "$id": "#/items/anyOf/0/properties/area_type_full",
+            "type": "null",
+            "title": "The area_type_full schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "area": {
+            "$id": "#/items/anyOf/0/properties/area",
+            "type": "null",
+            "title": "The area schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "city_fias_id": {
+            "$id": "#/items/anyOf/0/properties/city_fias_id",
+            "type": "null",
+            "title": "The city_fias_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "city_kladr_id": {
+            "$id": "#/items/anyOf/0/properties/city_kladr_id",
+            "type": "null",
+            "title": "The city_kladr_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "city_with_type": {
+            "$id": "#/items/anyOf/0/properties/city_with_type",
+            "type": "null",
+            "title": "The city_with_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "city_type": {
+            "$id": "#/items/anyOf/0/properties/city_type",
+            "type": "null",
+            "title": "The city_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "city_type_full": {
+            "$id": "#/items/anyOf/0/properties/city_type_full",
+            "type": "null",
+            "title": "The city_type_full schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "city": {
+            "$id": "#/items/anyOf/0/properties/city",
+            "type": "null",
+            "title": "The city schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "city_area": {
+            "$id": "#/items/anyOf/0/properties/city_area",
+            "type": "string",
+            "title": "The city_area schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Северо-восточный"
+            ]
+          },
+          "city_district_fias_id": {
+            "$id": "#/items/anyOf/0/properties/city_district_fias_id",
+            "type": "null",
+            "title": "The city_district_fias_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "city_district_kladr_id": {
+            "$id": "#/items/anyOf/0/properties/city_district_kladr_id",
+            "type": "null",
+            "title": "The city_district_kladr_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "city_district_with_type": {
+            "$id": "#/items/anyOf/0/properties/city_district_with_type",
+            "type": "string",
+            "title": "The city_district_with_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "р-н Северное Медведково"
+            ]
+          },
+          "city_district_type": {
+            "$id": "#/items/anyOf/0/properties/city_district_type",
+            "type": "string",
+            "title": "The city_district_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "р-н"
+            ]
+          },
+          "city_district_type_full": {
+            "$id": "#/items/anyOf/0/properties/city_district_type_full",
+            "type": "string",
+            "title": "The city_district_type_full schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "район"
+            ]
+          },
+          "city_district": {
+            "$id": "#/items/anyOf/0/properties/city_district",
+            "type": "string",
+            "title": "The city_district schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Северное Медведково"
+            ]
+          },
+          "settlement_fias_id": {
+            "$id": "#/items/anyOf/0/properties/settlement_fias_id",
+            "type": "null",
+            "title": "The settlement_fias_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "settlement_kladr_id": {
+            "$id": "#/items/anyOf/0/properties/settlement_kladr_id",
+            "type": "null",
+            "title": "The settlement_kladr_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "settlement_with_type": {
+            "$id": "#/items/anyOf/0/properties/settlement_with_type",
+            "type": "null",
+            "title": "The settlement_with_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "settlement_type": {
+            "$id": "#/items/anyOf/0/properties/settlement_type",
+            "type": "null",
+            "title": "The settlement_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "settlement_type_full": {
+            "$id": "#/items/anyOf/0/properties/settlement_type_full",
+            "type": "null",
+            "title": "The settlement_type_full schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "settlement": {
+            "$id": "#/items/anyOf/0/properties/settlement",
+            "type": "null",
+            "title": "The settlement schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "street_fias_id": {
+            "$id": "#/items/anyOf/0/properties/street_fias_id",
+            "type": "string",
+            "title": "The street_fias_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "95dbf7fb-0dd4-4a04-8100-4f6c847564b5"
+            ]
+          },
+          "street_kladr_id": {
+            "$id": "#/items/anyOf/0/properties/street_kladr_id",
+            "type": "string",
+            "title": "The street_kladr_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "77000000000283600"
+            ]
+          },
+          "street_with_type": {
+            "$id": "#/items/anyOf/0/properties/street_with_type",
+            "type": "string",
+            "title": "The street_with_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "ул Сухонская"
+            ]
+          },
+          "street_type": {
+            "$id": "#/items/anyOf/0/properties/street_type",
+            "type": "string",
+            "title": "The street_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "ул"
+            ]
+          },
+          "street_type_full": {
+            "$id": "#/items/anyOf/0/properties/street_type_full",
+            "type": "string",
+            "title": "The street_type_full schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "улица"
+            ]
+          },
+          "street": {
+            "$id": "#/items/anyOf/0/properties/street",
+            "type": "string",
+            "title": "The street schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Сухонская"
+            ]
+          },
+          "house_fias_id": {
+            "$id": "#/items/anyOf/0/properties/house_fias_id",
+            "type": "string",
+            "title": "The house_fias_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "5ee84ac0-eb9a-4b42-b814-2f5f7c27c255"
+            ]
+          },
+          "house_kladr_id": {
+            "$id": "#/items/anyOf/0/properties/house_kladr_id",
+            "type": "string",
+            "title": "The house_kladr_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "7700000000028360004"
+            ]
+          },
+          "house_type": {
+            "$id": "#/items/anyOf/0/properties/house_type",
+            "type": "string",
+            "title": "The house_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "д"
+            ]
+          },
+          "house_type_full": {
+            "$id": "#/items/anyOf/0/properties/house_type_full",
+            "type": "string",
+            "title": "The house_type_full schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "дом"
+            ]
+          },
+          "house": {
+            "$id": "#/items/anyOf/0/properties/house",
+            "type": "string",
+            "title": "The house schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "11"
+            ]
+          },
+          "block_type": {
+            "$id": "#/items/anyOf/0/properties/block_type",
+            "type": "null",
+            "title": "The block_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "block_type_full": {
+            "$id": "#/items/anyOf/0/properties/block_type_full",
+            "type": "null",
+            "title": "The block_type_full schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "block": {
+            "$id": "#/items/anyOf/0/properties/block",
+            "type": "null",
+            "title": "The block schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "entrance": {
+            "$id": "#/items/anyOf/0/properties/entrance",
+            "type": "null",
+            "title": "The entrance schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "floor": {
+            "$id": "#/items/anyOf/0/properties/floor",
+            "type": "null",
+            "title": "The floor schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "flat_fias_id": {
+            "$id": "#/items/anyOf/0/properties/flat_fias_id",
+            "type": "string",
+            "title": "The flat_fias_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "f26b876b-6857-4951-b060-ec6559f04a9a"
+            ]
+          },
+          "flat_type": {
+            "$id": "#/items/anyOf/0/properties/flat_type",
+            "type": "string",
+            "title": "The flat_type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "кв"
+            ]
+          },
+          "flat_type_full": {
+            "$id": "#/items/anyOf/0/properties/flat_type_full",
+            "type": "string",
+            "title": "The flat_type_full schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "квартира"
+            ]
+          },
+          "flat": {
+            "$id": "#/items/anyOf/0/properties/flat",
+            "type": "string",
+            "title": "The flat schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "89"
+            ]
+          },
+          "flat_area": {
+            "$id": "#/items/anyOf/0/properties/flat_area",
+            "type": "string",
+            "title": "The flat_area schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "34.6"
+            ]
+          },
+          "square_meter_price": {
+            "$id": "#/items/anyOf/0/properties/square_meter_price",
+            "type": "string",
+            "title": "The square_meter_price schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "214887"
+            ]
+          },
+          "flat_price": {
+            "$id": "#/items/anyOf/0/properties/flat_price",
+            "type": "string",
+            "title": "The flat_price schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "7435091"
+            ]
+          },
+          "postal_box": {
+            "$id": "#/items/anyOf/0/properties/postal_box",
+            "type": "null",
+            "title": "The postal_box schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "fias_id": {
+            "$id": "#/items/anyOf/0/properties/fias_id",
+            "type": "string",
+            "title": "The fias_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "f26b876b-6857-4951-b060-ec6559f04a9a"
+            ]
+          },
+          "fias_code": {
+            "$id": "#/items/anyOf/0/properties/fias_code",
+            "type": "string",
+            "title": "The fias_code schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "77000000000000028360004"
+            ]
+          },
+          "fias_level": {
+            "$id": "#/items/anyOf/0/properties/fias_level",
+            "type": "string",
+            "title": "The fias_level schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "9"
+            ]
+          },
+          "fias_actuality_state": {
+            "$id": "#/items/anyOf/0/properties/fias_actuality_state",
+            "type": "string",
+            "title": "The fias_actuality_state schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "0"
+            ]
+          },
+          "kladr_id": {
+            "$id": "#/items/anyOf/0/properties/kladr_id",
+            "type": "string",
+            "title": "The kladr_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "7700000000028360004"
+            ]
+          },
+          "capital_marker": {
+            "$id": "#/items/anyOf/0/properties/capital_marker",
+            "type": "string",
+            "title": "The capital_marker schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "0"
+            ]
+          },
+          "okato": {
+            "$id": "#/items/anyOf/0/properties/okato",
+            "type": "string",
+            "title": "The okato schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "45280583000"
+            ]
+          },
+          "oktmo": {
+            "$id": "#/items/anyOf/0/properties/oktmo",
+            "type": "string",
+            "title": "The oktmo schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "45362000"
+            ]
+          },
+          "tax_office": {
+            "$id": "#/items/anyOf/0/properties/tax_office",
+            "type": "string",
+            "title": "The tax_office schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "7715"
+            ]
+          },
+          "tax_office_legal": {
+            "$id": "#/items/anyOf/0/properties/tax_office_legal",
+            "type": "string",
+            "title": "The tax_office_legal schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "7715"
+            ]
+          },
+          "timezone": {
+            "$id": "#/items/anyOf/0/properties/timezone",
+            "type": "string",
+            "title": "The timezone schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "UTC+3"
+            ]
+          },
+          "geo_lat": {
+            "$id": "#/items/anyOf/0/properties/geo_lat",
+            "type": "string",
+            "title": "The geo_lat schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "55.8782557"
+            ]
+          },
+          "geo_lon": {
+            "$id": "#/items/anyOf/0/properties/geo_lon",
+            "type": "string",
+            "title": "The geo_lon schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "37.65372"
+            ]
+          },
+          "beltway_hit": {
+            "$id": "#/items/anyOf/0/properties/beltway_hit",
+            "type": "string",
+            "title": "The beltway_hit schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "IN_MKAD"
+            ]
+          },
+          "beltway_distance": {
+            "$id": "#/items/anyOf/0/properties/beltway_distance",
+            "type": "null",
+            "title": "The beltway_distance schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "qc_geo": {
+            "$id": "#/items/anyOf/0/properties/qc_geo",
+            "type": "integer",
+            "title": "The qc_geo schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+              0
+            ]
+          },
+          "qc_complete": {
+            "$id": "#/items/anyOf/0/properties/qc_complete",
+            "type": "integer",
+            "title": "The qc_complete schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+              0
+            ]
+          },
+          "qc_house": {
+            "$id": "#/items/anyOf/0/properties/qc_house",
+            "type": "integer",
+            "title": "The qc_house schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+              2
+            ]
+          },
+          "qc": {
+            "$id": "#/items/anyOf/0/properties/qc",
+            "type": "integer",
+            "title": "The qc schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+              0
+            ]
+          },
+          "unparsed_parts": {
+            "$id": "#/items/anyOf/0/properties/unparsed_parts",
+            "type": "null",
+            "title": "The unparsed_parts schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "metro": {
+            "$id": "#/items/anyOf/0/properties/metro",
+            "type": "array",
+            "title": "The metro schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+              [
+                {
+                  "distance": 1.1,
+                  "line": "Калужско-Рижская",
+                  "name": "Бабушкинская"
+                },
+                {
+                  "distance": 1.2,
+                  "line": "Калужско-Рижская",
+                  "name": "Медведково"
+                }
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "$id": "#/items/anyOf/0/properties/metro/items",
+              "anyOf": [
+                {
+                  "$id": "#/items/anyOf/0/properties/metro/items/anyOf/0",
+                  "type": "object",
+                  "title": "The first anyOf schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "distance": 1.1,
+                      "line": "Калужско-Рижская",
+                      "name": "Бабушкинская"
+                    }
+                  ],
+                  "required": [
+                    "distance",
+                    "line",
+                    "name"
+                  ],
+                  "properties": {
+                    "distance": {
+                      "$id": "#/items/anyOf/0/properties/metro/items/anyOf/0/properties/distance",
+                      "type": "number",
+                      "title": "The distance schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": 0.0,
+                      "examples": [
+                        1.1
+                      ]
+                    },
+                    "line": {
+                      "$id": "#/items/anyOf/0/properties/metro/items/anyOf/0/properties/line",
+                      "type": "string",
+                      "title": "The line schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                        "Калужско-Рижская"
+                      ]
+                    },
+                    "name": {
+                      "$id": "#/items/anyOf/0/properties/metro/items/anyOf/0/properties/name",
+                      "type": "string",
+                      "title": "The name schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                        "Бабушкинская"
+                      ]
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    ]
+  }
+}
