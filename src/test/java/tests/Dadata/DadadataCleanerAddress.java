@@ -19,12 +19,12 @@ public class DadadataCleanerAddress {
     String notRussia="[ \"Гродно советская\" ]";
 
 
-    @Test
-    public void DadataCleanerAddress_Default(){
+    @Test(description = "Request with cyrillic symbols in body")
+    public void DadataCleanerAddress_Cyrillic(){
         responseBody=sendReqAndGetRespDadataCleanerAddress(defaultBody);
     }
 
-    @Test
+    @Test(description = "Request with using json schema validator")
     public void DadataCleanerAddress_DefaultSchema(){
         responseBody=sendReqAndGetRespDadataCleanerAddressSchema(defaultBody);
 
@@ -37,14 +37,14 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.jsonPath().getString("[0].flat"),"89");
     }
 
-    @Test
+    @Test(description = "Compare indexes with json schema validator")
     public void DadataCleanerAddress_SchemaIndexCheck(){
         responseBody=sendReqAndGetRespDadataCleanerAddressSchema(defaultBody);
 
         Assert.assertEquals(responseBody.jsonPath().getString("[0].postal_code"),"127642");
     }
 
-    @Test
+    @Test(description = "Compare coordinates with json schema validator")
     public void DadataCleanerAddress_SchemaCoordinates(){
         responseBody=sendReqAndGetRespDadataCleanerAddressSchema(defaultBody);
 
@@ -52,7 +52,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.jsonPath().getString("[0].geo_lon"),"37.65372");
     }
 
-    @Test
+    @Test(description = "Compare close places with json schema validator")
     public void DadataCleanerAddress_SchemaClosePlaces(){
         responseBody=sendReqAndGetRespDadataCleanerAddressSchema(defaultBody);
 
@@ -65,7 +65,7 @@ public class DadadataCleanerAddress {
         Assert.assertNotNull(responseBody.jsonPath().getString("[0].metro"));
     }
 
-    @Test
+    @Test(description = "Compare codes with json schema validator")
     public void DadataCleanerAddress_SchemaCodes(){
         responseBody=sendReqAndGetRespDadataCleanerAddressSchema(defaultBody);
 
@@ -77,7 +77,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.jsonPath().getString("[0].tax_office_legal"),"7715");
     }
 
-    @Test
+    @Test(description = "Request with non Russian city in body")
     public void DadataCleanerAddress_SchemaNotRussia(){
         responseBody=sendReqAndGetRespDadataCleanerAddress(notRussia);
 
@@ -86,14 +86,14 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.jsonPath().getString("[0].city_with_type"),"г Гродно");
     }
 
-    @Test
+    @Test(description = "Checking null index with non Russian city in body")
     public void DadataCleanerAddress_SchemaNotRussia_Index(){
         responseBody=sendReqAndGetRespDadataCleanerAddress(notRussia);
 
         Assert.assertNull(responseBody.jsonPath().getString("[0].postal_code"));
     }
 
-    @Test
+    @Test(description = "Checking null coordinates with non Russian city in body")
     public void DadataCleanerAddress_SchemaNotRussia_Coordinates(){
         responseBody=sendReqAndGetRespDadataCleanerAddress(notRussia);
 
@@ -101,7 +101,7 @@ public class DadadataCleanerAddress {
         Assert.assertNull(responseBody.jsonPath().getString("[0].geo_lon"));
     }
 
-    @Test
+    @Test(description = "Checking null closest places with non Russian city in body")
     public void DadataCleanerAddress_SchemaNotRussia_ClosePlaces(){
         responseBody=sendReqAndGetRespDadataCleanerAddress(notRussia);
 
@@ -114,7 +114,7 @@ public class DadadataCleanerAddress {
         Assert.assertNull(responseBody.jsonPath().getString("[0].metro"));
     }
 
-    @Test
+    @Test(description = "Checking null codes with non Russian city in body")
     public void DadataCleanerAddress_SchemaNotRussia_Codes(){
         responseBody=sendReqAndGetRespDadataCleanerAddress(notRussia);
 
@@ -126,14 +126,14 @@ public class DadadataCleanerAddress {
         Assert.assertNull(responseBody.jsonPath().getString("[0].tax_office_legal"));
     }
 
-    @Test
+    @Test(description = "Request with empty body")
     public void DadataCleanerAddress_Schema_EmptyValReqBody(){
         requestBody="[]";
 
         responseBody=sendReqAndGetRespDadataCleanerAddress(requestBody,400);
     }
 
-    @Test
+    @Test(description = "Request with max symbols in body")
     public void DadataCleanerAddress_Schema_OutOfMaxReqBody(){
         //4500 symbols
         requestBody="[ \"ГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветскаяГродносоветская\" ]";
@@ -141,14 +141,14 @@ public class DadadataCleanerAddress {
         responseBody=sendReqAndGetRespDadataCleanerAddress(requestBody,200);
     }
 
-    @Test
+    @Test(description = "Request without well formed json in body")
     public void DadataCleanerAddress_Schema_NotWfJsonReqBody(){
         requestBody="[Гродно советская]";
 
         responseBody=sendReqAndGetRespDadataCleanerAddress(requestBody,400);
     }
 
-    @Test
+    @Test(description = "Request with body in english")
     public void DadataCleanerAddress_Schema_EngReqBody(){
         requestBody="[\"Moscow Sukhonska 11/-89 \"]";
 
@@ -163,7 +163,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.jsonPath().getString("[0].flat"),"89");
     }
 
-    @Test
+    @Test(description = "Request with transfered text in body")
     public void DadataCleanerAddress_Schema_TransferReqBody(){
         requestBody="[\"vcr ce[jycrf 11/-89\"]";
 
@@ -180,7 +180,7 @@ public class DadadataCleanerAddress {
 //        Assert.assertEquals(responseBody.jsonPath().getString("[0].flat"),"89");
     }
 
-    @Test
+    @Test(description = "Request with numbers in body")
     public void DadataCleanerAddress_Schema_NumbersInReqBody(){
         requestBody="[\"123 564\"]";
 
@@ -189,7 +189,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.jsonPath().getString("[0].unparsed_parts"),"123 564");
     }
 
-    @Test
+    @Test(description = "Request with special symbols in body")
     public void DadataCleanerAddress_Schema_SpecSymbInReqBody(){
         requestBody="[\"!#$%@ *&^\"]";
 
@@ -198,14 +198,14 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.jsonPath().getString("[0].unparsed_parts"),"!#$%@ *&^");
     }
 
-    @Test
+    @Test(description = "Request with empty body")
     public void DadataCleanerAddress_Schema_EmptyReqBody(){
         requestBody="";
 
         responseBody=sendReqAndGetRespDadataCleanerAddress(requestBody,400);
     }
 
-    @Test
+    @Test(description = "Request with upper case symbols in body")
     public void DadataCleanerAddress_Schema_UpCaseReqBody(){
         requestBody="[ \"МСК СУХОНСКА 11/-89\" ]";
 
@@ -220,7 +220,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.jsonPath().getString("[0].flat"),"89");
     }
 
-    @Test
+    @Test(description = "Request with mixed case symbols in body")
     public void DadataCleanerAddress_Schema_MixCaseReqBody(){
         requestBody="[ \"МсК сухОНска 11/-89\" ]";
 
@@ -235,19 +235,19 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.jsonPath().getString("[0].flat"),"89");
     }
 
-    @Test
+    @Test(description = "Request with zero in body")
     public void DadataCleanerAddress_Schema_ZeroReqBody(){
         requestBody="[ \"000\" ]";
 
         responseBody=sendReqAndGetRespDadataCleanerAddress(requestBody,200);
     }
 
-    @Test
+    @Test(description = "Request with incorrect method")
     public void DadataCleanerAddress_Get(){
         responseBody=sendReqAndGetRespDadataCleanerAddress_Get(defaultBody);
     }
 
-    @Test
+    @Test(description = "Request without authorization header")
     public void DadataCleanerAddress_NoAuth(){
         reqDadataCleanerAddressSpecBuilder_NoHead.setContentType(ContentType.JSON);
         reqDadataCleanerAddressSpecBuilder_NoHead.addHeader("X-Secret",DADATA_SECRET_KEY);
@@ -257,7 +257,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.getStatusCode(),401);
     }
 
-    @Test
+    @Test(description = "Request with incorrect type in authorization header")
     public void DadataCleanerAddress_IncAuth(){
         reqDadataCleanerAddressSpecBuilder_NoHead.setContentType(ContentType.JSON);
         reqDadataCleanerAddressSpecBuilder_NoHead.addHeader("Authorization","Token 80a01fdef1c07b1bf1b32ea8b99cb795cd2cd");
@@ -268,7 +268,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.getStatusCode(),403);
     }
 
-    @Test
+    @Test(description = "Request with empty value in authorization header")
     public void DadataCleanerAddress_EmptyAuth(){
         reqDadataCleanerAddressSpecBuilder_NoHead.setContentType(ContentType.JSON);
         reqDadataCleanerAddressSpecBuilder_NoHead.addHeader("Authorization","");
@@ -279,7 +279,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.getStatusCode(),401);
     }
 
-    @Test
+    @Test(description = "Request without secret key header")
     public void DadataCleanerAddress_NoSecKey(){
         reqDadataCleanerAddressSpecBuilder_NoHead.setContentType(ContentType.JSON);
         reqDadataCleanerAddressSpecBuilder_NoHead.addHeader("Authorization",API_TOKEN_DADATA);
@@ -289,7 +289,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.getStatusCode(),401);
     }
 
-    @Test
+    @Test(description = "Request with incorrect value in secret key header")
     public void DadataCleanerAddress_IncSecKey(){
         reqDadataCleanerAddressSpecBuilder_NoHead.setContentType(ContentType.JSON);
         reqDadataCleanerAddressSpecBuilder_NoHead.addHeader("Authorization",API_TOKEN_DADATA);
@@ -300,7 +300,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.getStatusCode(),403);
     }
 
-    @Test
+    @Test(description = "Request with empty value in secret key header")
     public void DadataCleanerAddress_EmptySecKey(){
         reqDadataCleanerAddressSpecBuilder_NoHead.setContentType(ContentType.JSON);
         reqDadataCleanerAddressSpecBuilder_NoHead.addHeader("Authorization",API_TOKEN_DADATA);
@@ -311,7 +311,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.getStatusCode(),401);
     }
 
-    @Test
+    @Test(description = "Request without content type header")
     public void DadataCleanerAddress_NoContType(){
         reqDadataCleanerAddressSpecBuilder_NoHead.addHeader("Authorization",API_TOKEN_DADATA);
         reqDadataCleanerAddressSpecBuilder_NoHead.addHeader("X-Secret",DADATA_SECRET_KEY);
@@ -321,7 +321,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.getStatusCode(),415);
     }
 
-    @Test
+    @Test(description = "Request with incorrect type in content type header")
     public void DadataCleanerAddress_IncContType(){
         reqDadataCleanerAddressSpecBuilder_NoHead.setContentType(ContentType.XML);
         reqDadataCleanerAddressSpecBuilder_NoHead.addHeader("Authorization",API_TOKEN_DADATA);
@@ -332,7 +332,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.getStatusCode(),415);
     }
 
-    @Test
+    @Test(description = "Request with json type in access header")
     public void DadataCleanerAddress_JsonAccess(){
         reqDadataCleanerAddressSpecBuilder.setAccept(ContentType.JSON);
 
@@ -341,7 +341,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.getStatusCode(),200);
     }
 
-    @Test
+    @Test(description = "Request with xml type in access header")
     public void DadataCleanerAddress_XmlAccess(){
         reqDadataCleanerAddressSpecBuilder.setAccept(ContentType.XML);
 
@@ -350,7 +350,7 @@ public class DadadataCleanerAddress {
         Assert.assertEquals(responseBody.getStatusCode(),406);
     }
 
-    @Test
+    @Test(description = "Request with empty value in accept header")
     public void DadataCleanerAddress_EmptyAccess(){
         reqDadataCleanerAddressSpecBuilder.addHeader("Accept","");
 
