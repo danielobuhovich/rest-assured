@@ -7,9 +7,7 @@ import lombok.Setter;
 import utils.NetworkCore;
 
 import java.util.HashMap;
-import java.util.spi.CalendarDataProvider;
 
-import static constants.Constants.API_TOKEN;
 import static constants.Constants.Endpoint.GOOGLE_PLACE_ENDPOINT_SEARCH;
 import static constants.Constants.Path.GOOGLE_PLACE_PATH;
 import static constants.Constants.ServerName.GOOGLE_PLACE_SERVER;

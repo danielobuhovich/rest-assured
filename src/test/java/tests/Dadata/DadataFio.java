@@ -3,14 +3,13 @@ package tests.Dadata;
 import com.jayway.jsonpath.JsonPath;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
 import static org.testng.Assert.assertTrue;
-import static utils.NetworkCore.*;
+import static utils.NetworkCoreDadataFio.*;
 
 public class DadataFio {
 

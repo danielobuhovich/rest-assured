@@ -1,20 +1,15 @@
 package tests.Dadata;
 
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static utils.NetworkCore.*;
+import static utils.NetworkCodeDadataName.*;
 
 
 public class DadataName {
 
     String defaultName ="[\"Срегей владимерович иванов\"]";
     String requestBody;
-
-    Response responseBody;
-
 
     @Test(description = "1. Positive test of name searching in dadata cleaner")
     public  void SearchDadataName_Correct(){

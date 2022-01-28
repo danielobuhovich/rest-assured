@@ -8,10 +8,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
 
 import static constants.Constants.API_TOKEN_DADATA;
-import static utils.NetworkCore.*;
+import static utils.NetworkCoreDadataCountries.*;
 
 public class DadataCountries {
 
