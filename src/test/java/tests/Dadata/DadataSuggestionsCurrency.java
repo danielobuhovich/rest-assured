@@ -10,7 +10,6 @@ import static utils.NetworkCoreDadataCurrency.*;
 
 public class DadataSuggestionsCurrency {
 
-    String jsonBody;
     String requestBody;
 
     Response responseBody;

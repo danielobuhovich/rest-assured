@@ -4,7 +4,6 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.json.JSONObject;
 
 import static constants.Constants.API_TOKEN_DADATA;
 import static constants.Constants.Endpoint.DADATA_ENDPOINT_SUGGESTION_CURRENCY;
@@ -14,8 +13,6 @@ import static io.restassured.RestAssured.given;
 
 public class NetworkCoreDadataCurrency {
 
-    protected RequestSpecBuilder requestSpecBuilder=new RequestSpecBuilder();
-    protected static JSONObject jsonResponse;
     static Response responseDadata;
 
     public static RequestSpecBuilder reqDadataSuggCurrencySpecBuilder = new RequestSpecBuilder()
@@ -25,15 +22,6 @@ public class NetworkCoreDadataCurrency {
             .addHeader("Authorization",API_TOKEN_DADATA);
 
     static RequestSpecification reqDadataSuggCurrencySpec=reqDadataSuggCurrencySpecBuilder.build();
-
-    public static Response sendReqAndGetRespDadataSuggCurrency(String reqBody) {
-        responseDadata = given().
-                spec(reqDadataSuggCurrencySpec).
-                body(reqBody).
-                when().post();
-        responseDadata.then().log().body();
-        return responseDadata;
-    }
 
     public static Response sendReqAndGetRespDadataSuggCurrency(String reqBody, int stCode) {
         responseDadata = given().

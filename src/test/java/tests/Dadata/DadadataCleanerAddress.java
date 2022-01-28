@@ -7,11 +7,10 @@ import org.testng.annotations.Test;
 
 import static constants.Constants.API_TOKEN_DADATA;
 import static constants.Constants.DADATA_SECRET_KEY;
-import static utils.NetworkCore.*;
+import static utils.NetworkCoreDadataCleanerAddress.*;
 
 public class DadadataCleanerAddress {
 
-    String jsonBody;
     String requestBody;
 
     Response responseBody;
@@ -170,15 +169,15 @@ public class DadadataCleanerAddress {
 
         responseBody=sendReqAndGetRespDadataCleanerAddress(requestBody);
 
-//        Assert.assertEquals(responseBody.jsonPath().getString("[0].unparsed_parts"),"vcr ce[jycrf 11/-89");
+        Assert.assertEquals(responseBody.jsonPath().getString("[0].unparsed_parts"),"vcr ce[jycrf 11/-89");
 
-        Assert.assertEquals(responseBody.jsonPath().getString("[0].country"),"Россия");
-        Assert.assertEquals(responseBody.jsonPath().getString("[0].region"),"Москва");
-        Assert.assertEquals(responseBody.jsonPath().getString("[0].street_with_type"),"ул Сухонская");
-        Assert.assertEquals(responseBody.jsonPath().getString("[0].house_type_full"),"дом");
-        Assert.assertEquals(responseBody.jsonPath().getString("[0].house"),"11");
-        Assert.assertEquals(responseBody.jsonPath().getString("[0].flat_type_full"),"квартира");
-        Assert.assertEquals(responseBody.jsonPath().getString("[0].flat"),"89");
+//        Assert.assertEquals(responseBody.jsonPath().getString("[0].country"),"Россия");
+//        Assert.assertEquals(responseBody.jsonPath().getString("[0].region"),"Москва");
+//        Assert.assertEquals(responseBody.jsonPath().getString("[0].street_with_type"),"ул Сухонская");
+//        Assert.assertEquals(responseBody.jsonPath().getString("[0].house_type_full"),"дом");
+//        Assert.assertEquals(responseBody.jsonPath().getString("[0].house"),"11");
+//        Assert.assertEquals(responseBody.jsonPath().getString("[0].flat_type_full"),"квартира");
+//        Assert.assertEquals(responseBody.jsonPath().getString("[0].flat"),"89");
     }
 
     @Test
@@ -203,7 +202,7 @@ public class DadadataCleanerAddress {
     public void DadataCleanerAddress_Schema_EmptyReqBody(){
         requestBody="";
 
-        responseBody=sendReqAndGetRespDadataCleanerAddress(requestBody,400);;
+        responseBody=sendReqAndGetRespDadataCleanerAddress(requestBody,400);
     }
 
     @Test

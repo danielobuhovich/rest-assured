@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 
 import static constants.Constants.API_TOKEN_DADATA;
-import static utils.NetworkCore.*;
+import static utils.NetworkCoreDadataCountries.*;
 
 public class DadataCountries {
 
