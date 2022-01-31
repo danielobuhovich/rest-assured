@@ -15,8 +15,6 @@ import static io.restassured.RestAssured.given;
 
 public class NetworkCodeDadataName {
 
-    protected Response response;
-
     static Response responseDadata;
 
     //positive spec
