@@ -3,7 +3,6 @@ package tests.Dadata;
 import com.jayway.jsonpath.JsonPath;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import lombok.Builder;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

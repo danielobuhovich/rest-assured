@@ -27,6 +27,7 @@ public class Constants {
         public static String DADATA_ENDPOINT_CLEANER_ADDRESS="/address";
         public static String DADATA_ENDPOINT_SUGGESTION_CURRENCY="/currency";
         public static String DADATA_ENDPOINT_EMAIL="/email";
+        public static String DADATA_ENDPOINT_SUGGESTIONS_BANK="/bank";
     }
 
     public static final String API_TOKEN= UtilsMethods.getValue("TOKEN");
