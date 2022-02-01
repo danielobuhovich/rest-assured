@@ -24,15 +24,6 @@ public class NetworkCoreDadataSuggestionsBank {
     public static RequestSpecification reqSpecDadataSuggBank=reqSpecBuildDadataSuggBank.build();
 
 
-    public static Response FunctionDadataSuggBank(String reqBody){
-        responseDadata=given().
-                spec(reqSpecDadataSuggBank).
-                body(reqBody).
-                when().post();
-        responseDadata.then().log().body();
-        return responseDadata;
-    }
-
     public static Response FunctionDadataSuggBank(String reqBody,int stCode){
         responseDadata=given().
                 spec(reqSpecDadataSuggBank).

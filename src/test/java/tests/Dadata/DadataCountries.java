@@ -1,6 +1,5 @@
 package tests.Dadata;
 
-import com.jayway.jsonpath.JsonPath;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
@@ -10,14 +9,15 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 
 import static constants.Constants.API_TOKEN_DADATA;
+import static utils.NetworkCore.FunctionJsonPathRead;
 import static utils.NetworkCoreDadataCountries.*;
 
 public class DadataCountries {
 
-    String jsonBody;
     String requestBody;
 
     Response responseBody;
+    ArrayList<String> values;
 
     String defaultBody="{\"query\": \"Мона\"}";
 
@@ -178,8 +178,7 @@ public class DadataCountries {
 
         responseBody.then().assertThat().body("suggestions[0]",Matchers.notNullValue());
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values= JsonPath.read(jsonBody,"$..code");
+        values=FunctionJsonPathRead(responseBody,"$..code");
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
         Assert.assertTrue(values.contains("500"));
@@ -218,8 +217,7 @@ public class DadataCountries {
 
         responseBody.then().assertThat().body("suggestions[0]",Matchers.notNullValue());
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values= JsonPath.read(jsonBody,"$..alfa2");
+        values= FunctionJsonPathRead(responseBody,"$..alfa2");
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
         Assert.assertTrue(values.contains("NL"));
@@ -234,8 +232,7 @@ public class DadataCountries {
 
         responseBody.then().assertThat().body("suggestions[0]",Matchers.notNullValue());
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values= JsonPath.read(jsonBody,"$..alfa3");
+        values= FunctionJsonPathRead(responseBody,"$..alfa3");
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
         Assert.assertTrue(values.contains("UKR"));

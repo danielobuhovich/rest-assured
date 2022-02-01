@@ -9,6 +9,7 @@ public class Constants {
         public static String GOOGLE_PLACE_SERVER="https://maps.googleapis.com/";
         public static String DADATA_CLEANER_SERVER="https://cleaner.dadata.ru";
         public static String DADATA_SUGGESTION_SERVER="https://suggestions.dadata.ru";
+        public static String DADATA_SERVER="https://dadata.ru/";
     }
 
     //path
@@ -16,6 +17,7 @@ public class Constants {
         public static String GOOGLE_PLACE_PATH="maps/api/place/";
         public static String DADATA_SUGGESTION_PATH="/suggestions/api/4_1/rs/suggest";
         public static String DADATA_CLEANER_PATH="/api/v1/clean";
+        public static String DADATA_STAT_PATH="api/v2/stat/";
     }
 
     //endpoint
@@ -28,6 +30,7 @@ public class Constants {
         public static String DADATA_ENDPOINT_SUGGESTION_CURRENCY="/currency";
         public static String DADATA_ENDPOINT_EMAIL="/email";
         public static String DADATA_ENDPOINT_SUGGESTIONS_BANK="/bank";
+        public static String DADATA_ENDPOINT_STAT_DAILY="daily";
     }
 
     public static final String API_TOKEN= UtilsMethods.getValue("TOKEN");
