@@ -1,6 +1,5 @@
 package tests.Dadata;
 
-import com.jayway.jsonpath.JsonPath;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -9,6 +8,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 
 import static constants.Constants.API_TOKEN_DADATA;
+import static utils.NetworkCore.FunctionJsonPathRead;
 import static utils.NetworkCoreDadataSuggestionsEmail.*;
 
 public class DadataSuggestionsEmail {
@@ -16,15 +16,14 @@ public class DadataSuggestionsEmail {
     String defaultBody="{ \"query\": \"serega@\" }";
     String requestBody;
     Response responseBody;
-    String jsonBody;
+    ArrayList<String> values;
 
     @Test(description = "Request with latin symbols in body")
     public void DadataSuggestionsEmail_Latin(){
 
         responseBody=FunctionDadataSuggestionsEmail(defaultBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values= JsonPath.read(jsonBody,"$..local");
+        values= FunctionJsonPathRead(responseBody,"$..local");
 
         Assert.assertTrue(values.contains("serega"));
     }
@@ -46,8 +45,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..local");
+        values=FunctionJsonPathRead(responseBody,"$..local");
 
         Assert.assertTrue(values.contains("1234"));
     }
@@ -69,8 +67,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..local");
+        values=FunctionJsonPathRead(responseBody,"$..local");
 
         Assert.assertTrue(values.contains("serega"));
     }
@@ -82,8 +79,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..local");
+        values=FunctionJsonPathRead(responseBody,"$..local");
 
         Assert.assertTrue(values.contains("serega"));
     }
@@ -144,8 +140,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(defaultBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(10,values.size());
     }
@@ -156,8 +151,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(10,values.size());
     }
@@ -168,8 +162,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(1,values.size());
     }
@@ -180,8 +173,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(2,values.size());
     }
@@ -192,8 +184,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(10,values.size());
     }
@@ -204,8 +195,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(10,values.size());
     }
@@ -216,8 +206,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(20,values.size());
     }
@@ -228,8 +217,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(19,values.size());
     }
@@ -240,8 +228,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(20,values.size());
     }
@@ -252,8 +239,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(20,values.size());
     }
@@ -292,8 +278,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..local");
+        values=FunctionJsonPathRead(responseBody,"$..local");
 
         Assert.assertTrue(values.contains("serega"));
     }
@@ -304,8 +289,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..local");
+        values=FunctionJsonPathRead(responseBody,"$..local");
 
         Assert.assertTrue(values.contains("serega"));
     }
@@ -323,8 +307,7 @@ public class DadataSuggestionsEmail {
 
         responseBody=FunctionDadataSuggestionsEmail(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..domain");
+        values=FunctionJsonPathRead(responseBody,"$..domain");
 
         Assert.assertTrue(values.contains("gmail.com"));
     }

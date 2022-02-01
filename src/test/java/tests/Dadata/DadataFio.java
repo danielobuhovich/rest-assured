@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 
 import static org.testng.Assert.assertTrue;
+import static utils.NetworkCore.FunctionJsonPathRead;
 import static utils.NetworkCoreDadataFio.*;
 
 public class DadataFio {
@@ -17,6 +18,7 @@ public class DadataFio {
     String jsonBody;
     String requestBody;
     String defaultBody="{\"query\": \"Сергей\"}";
+    ArrayList<String> values;
 
     @Test(description = "Positive test of FIO searching in dadata suggestions with default count")
     public  void SearchDadataFIO_Positive(){
@@ -25,8 +27,7 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(values.size(),10);
         Assert.assertTrue(values.contains("Сергей"));
@@ -41,10 +42,9 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> genders=JsonPath.read(jsonBody,"$..gender");
+        values=FunctionJsonPathRead(responseBody,"$..gender");
 
-        Assert.assertFalse(genders.contains("MALE"));
+        Assert.assertFalse(values.contains("MALE"));
     }
 
     @Test(description = "Expecting response body will contain not female gender")
@@ -56,10 +56,9 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> genders=JsonPath.read(jsonBody,"$..gender");
+        values=FunctionJsonPathRead(responseBody,"$..gender");
 
-        Assert.assertFalse(genders.contains("FEMALE"));
+        Assert.assertFalse(values.contains("FEMALE"));
     }
 
     @Test(description = "Request body with special characters")
@@ -69,12 +68,11 @@ public class DadataFio {
 
         responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> allBody=JsonPath.read(jsonBody,"*");
+        values=FunctionJsonPathRead(responseBody,"*");
 
         Assert.assertEquals(responseBody.getStatusCode(),400);
 
-        Assert.assertTrue(allBody.contains("!@# %^& &^%"));
+        Assert.assertTrue(values.contains("!@# %^& &^%"));
     }
 
     @Test(description = "Request body with numbers")
@@ -84,12 +82,11 @@ public class DadataFio {
 
         responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> allBody=JsonPath.read(jsonBody,"*");
+        values=FunctionJsonPathRead(responseBody,"*");
 
         Assert.assertEquals(responseBody.getStatusCode(),400);
 
-        Assert.assertTrue(allBody.contains("123 456 7890"));
+        Assert.assertTrue(values.contains("123 456 7890"));
     }
 
     @Test(description = "Request with upper case latin characters")
@@ -101,8 +98,7 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertTrue(values.contains("Сергей"));
     }
@@ -116,8 +112,7 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertTrue(values.contains("Сергей"));
     }
@@ -131,8 +126,7 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertTrue(values.contains("Сергей"));
     }
@@ -146,10 +140,9 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> un_values=JsonPath.read(jsonBody,"$..unrestricted_value");
+        values=FunctionJsonPathRead(responseBody,"$..unrestricted_value");
 
-        assertTrue(un_values.contains("John"));
+        assertTrue(values.contains("John"));
     }
 
     @Test(description = "Request with unknown gender")
@@ -159,12 +152,11 @@ public class DadataFio {
 
         responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> genders=JsonPath.read(jsonBody,"$..gender");
+        values=FunctionJsonPathRead(responseBody,"$..gender");
 
-        assertTrue(genders.contains("MALE"));
-        assertTrue(genders.contains("FEMALE"));
-        assertTrue(genders.contains("UNKNOWN"));
+        assertTrue(values.contains("MALE"));
+        assertTrue(values.contains("FEMALE"));
+        assertTrue(values.contains("UNKNOWN"));
     }
 
     @Test(description = "Request with male gender")
@@ -174,12 +166,11 @@ public class DadataFio {
 
         responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> genders=JsonPath.read(jsonBody,"$..gender");
+        values=FunctionJsonPathRead(responseBody,"$..gender");
 
-        assertTrue(genders.contains("MALE"));
-        Assert.assertFalse(genders.contains("FEMALE"));
-        assertTrue(genders.contains("UNKNOWN"));
+        assertTrue(values.contains("MALE"));
+        Assert.assertFalse(values.contains("FEMALE"));
+        assertTrue(values.contains("UNKNOWN"));
     }
 
     @Test(description = "Request with female gender")
@@ -189,12 +180,11 @@ public class DadataFio {
 
         responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> genders=JsonPath.read(jsonBody,"$..gender");
+        values=FunctionJsonPathRead(responseBody,"$..gender");
 
-        Assert.assertFalse(genders.contains("MALE"));
-        assertTrue(genders.contains("FEMALE"));
-        assertTrue(genders.contains("UNKNOWN"));
+        Assert.assertFalse(values.contains("MALE"));
+        assertTrue(values.contains("FEMALE"));
+        assertTrue(values.contains("UNKNOWN"));
     }
 
     @Test(description = "Request with empty gender")
@@ -204,12 +194,11 @@ public class DadataFio {
 
         responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> genders=JsonPath.read(jsonBody,"$..gender");
+        values=FunctionJsonPathRead(responseBody,"$..gender");
 
-        Assert.assertTrue(genders.contains("MALE"));
-        assertTrue(genders.contains("FEMALE"));
-        assertTrue(genders.contains("UNKNOWN"));
+        Assert.assertTrue(values.contains("MALE"));
+        assertTrue(values.contains("FEMALE"));
+        assertTrue(values.contains("UNKNOWN"));
     }
 
     @Test(description = "Request with int value in gender")
@@ -237,12 +226,11 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> genders=JsonPath.read(jsonBody,"$..gender");
+        values=FunctionJsonPathRead(responseBody,"$..gender");
 
-        Assert.assertFalse(genders.contains("MALE"));
-        assertTrue(genders.contains("FEMALE"));
-        assertTrue(genders.contains("UNKNOWN"));
+        Assert.assertFalse(values.contains("MALE"));
+        assertTrue(values.contains("FEMALE"));
+        assertTrue(values.contains("UNKNOWN"));
     }
 
     @Test(description = "Transfer text to russian")
@@ -254,8 +242,7 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         assertTrue(values.contains("Сергей"));
     }
@@ -292,9 +279,7 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         assertTrue(values.contains("John Lenon"));
     }
@@ -330,8 +315,7 @@ public class DadataFio {
 
         responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(values.size(),10);
     }
@@ -343,8 +327,7 @@ public class DadataFio {
 
         responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(values.size(),10);
     }
@@ -356,8 +339,7 @@ public class DadataFio {
 
         responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(values.size(),10);
     }
@@ -369,8 +351,7 @@ public class DadataFio {
 
         responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(values.size(),1);
     }
@@ -382,8 +363,7 @@ public class DadataFio {
 
         responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(values.size(),20);
     }
@@ -395,8 +375,7 @@ public class DadataFio {
 
         responseBody=sendReqAndGetRespDadataSuggestFio(requestBody);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..value");
+        values=FunctionJsonPathRead(responseBody,"$..value");
 
         Assert.assertEquals(values.size(),20);
     }
@@ -533,10 +512,9 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> names=JsonPath.read(jsonBody,"$..name");
+        values=FunctionJsonPathRead(responseBody,"$..name");
 
-        String resultArraylist = String.join(",", names.toArray(new String[0]));
+        String resultArraylist = String.join(",", values.toArray(new String[0]));
 
         Assert.assertTrue(resultArraylist.contains("Иван"));
     }
@@ -553,10 +531,9 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> surnames=JsonPath.read(jsonBody,"$..surname");
+        values=FunctionJsonPathRead(responseBody,"$..surname");
 
-        String resultArraylist = String.join(",", surnames.toArray(new String[0]));
+        String resultArraylist = String.join(",", values.toArray(new String[0]));
 
         Assert.assertTrue(resultArraylist.contains("Иван"));
     }
@@ -573,10 +550,9 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> patronymics=JsonPath.read(jsonBody,"$..patronymic");
+        values=FunctionJsonPathRead(responseBody,"$..patronymic");
 
-        String resultArraylist = String.join(",", patronymics.toArray(new String[0]));
+        String resultArraylist = String.join(",", values.toArray(new String[0]));
 
         Assert.assertTrue(resultArraylist.contains("Иван"));
     }
@@ -593,8 +569,7 @@ public class DadataFio {
 
         Assert.assertEquals(responseBody.getStatusCode(),200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..unrestricted_value");
+        values=FunctionJsonPathRead(responseBody,"$..unrestricted_value");
 
         Assert.assertTrue(values.contains("Иван"));
     }

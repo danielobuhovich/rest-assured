@@ -1,6 +1,5 @@
 package tests.Dadata;
 
-import com.jayway.jsonpath.JsonPath;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -9,6 +8,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 
 import static constants.Constants.API_TOKEN_DADATA;
+import static utils.NetworkCore.FunctionJsonPathRead;
 import static utils.NetworkCoreDadataSuggestionsBank.*;
 
 public class DadataSuggestionsBank {
@@ -16,7 +16,7 @@ public class DadataSuggestionsBank {
     String defaultBody="{ \"query\": \"сбербанк\" }";
     String requestBody;
     Response responseBody;
-    String jsonBody;
+    ArrayList<String> values;
 
     @Test(description = "Request with cyrillic symbols in body")
     public void DadataSuggestionsBank_Cyrillic(){
@@ -196,8 +196,8 @@ public class DadataSuggestionsBank {
         responseBody=FunctionDadataSuggBank_NoHead(defaultBody,200);
     }
 
-    //TODO
-    @Test(description = "")
+
+    @Test(description = "Searching by BIK")
     public void DadataSuggestionsBank_SearchBIK(){
         requestBody="{ \"query\": \"044525974\" }";
 
@@ -206,7 +206,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("suggestions[0]").contains("Тинькофф"));
     }
 
-    @Test
+    @Test(description = "Searching by not full BIK")
     public void DadataSuggestionsBank_SearchNotFullBIK(){
         requestBody="{ \"query\": \"04452\" }";
 
@@ -215,7 +215,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("").contains("Тинькофф"));
     }
 
-    @Test
+    @Test(description = "Searching by SWIFT")
     public void DadataSuggestionsBank_SearchSwift(){
         requestBody="{ \"query\": \"TICSRUMMXXX\" }";
 
@@ -224,7 +224,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("suggestions[0]").contains("Тинькофф"));
     }
 
-    @Test
+    @Test(description = "Searching by not full SWIFT")
     public void DadataSuggestionsBank_SearchNotFullSwift(){
         requestBody="{ \"query\": \"TICSRUM\" }";
 
@@ -233,7 +233,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("").contains("Тинькофф"));
     }
 
-    @Test
+    @Test(description = "Searching by Inn")
     public void DadataSuggestionsBank_SearchInn(){
         requestBody="{ \"query\": \"7710140679\" }";
 
@@ -242,7 +242,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("suggestions[0]").contains("Тинькофф"));
     }
 
-    @Test
+    @Test(description = "Searching by not full Inn")
     public void DadataSuggestionsBank_SearchNotFullInn(){
         requestBody="{ \"query\": \"77101406\" }";
 
@@ -251,7 +251,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("").contains("Тинькофф"));
     }
 
-    @Test
+    @Test(description = "Searching by Kpp")
     public void DadataSuggestionsBank_SearchKpp(){
         requestBody="{ \"query\": \"771301001\" }";
 
@@ -260,7 +260,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("").contains("Тинькофф"));
     }
 
-    @Test
+    @Test(description = "Searching by not full Kpp")
     public void DadataSuggestionsBank_SearchNotFullKpp(){
         requestBody="{ \"query\": \"7713010\" }";
 
@@ -269,7 +269,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("").contains("Тинькофф"));
     }
 
-    @Test
+    @Test(description = "Searching by address")
     public void DadataSuggestionsBank_SearchAddress(){
         requestBody="{ \"query\": \"ул Хуторская 2, д 38а\" }";
 
@@ -278,40 +278,38 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("").contains("Тинькофф"));
     }
 
-    @Test
+    @Test(description = "Searching by bank status")
     public void DadataSuggestionsBank_BankStatus(){
         requestBody="{\"query\": \"банк\",\"status\": [\"LIQUIDATING\"]}";
 
         responseBody=FunctionDadataSuggBank(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values= JsonPath.read(jsonBody,"$..status");
+        values= FunctionJsonPathRead(responseBody,"$..status");
 
         Assert.assertTrue(values.contains("LIQUIDATING"));
         Assert.assertFalse(values.contains("ACTIVE"));
     }
 
-    @Test
+    @Test(description = "Request with low case in body")
     public void DadataSuggestionsBank_BankStatusLowCase(){
         requestBody="{\"query\": \"банк\",\"status\": [\"liquidating\"]}";
 
         responseBody=FunctionDadataSuggBank(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values= JsonPath.read(jsonBody,"$..status");
+        values= FunctionJsonPathRead(responseBody,"$..status");
 
         Assert.assertTrue(values.contains("LIQUIDATING"));
         Assert.assertFalse(values.contains("ACTIVE"));
     }
 
-    @Test
+    @Test(description = "Request with incorrect bank status")
     public void DadataSuggestionsBank_BankincStatus(){
         requestBody="{\"query\": \"банк\",\"status\": [\"liguidating\"]}";
 
         responseBody=FunctionDadataSuggBank(requestBody,400);
     }
 
-    @Test
+    @Test(description = "Request with empty bank status")
     public void DadataSuggestionsBank_EmptyBankStatus(){
         requestBody="{\"query\": \"банк\",\"status\": [\" \"]}";
 
@@ -320,7 +318,7 @@ public class DadataSuggestionsBank {
         Assert.assertNull(responseBody.jsonPath().getString("suggestions[0]"));
     }
 
-    @Test
+    @Test(description = "Request with bank type in body")
     public void DadataSuggesstionsBank_BankType(){
         requestBody="{\n" +
                 "    \"query\": \"банк\", \n" +
@@ -330,8 +328,7 @@ public class DadataSuggestionsBank {
 
         responseBody=FunctionDadataSuggBank(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..type");
+        values=FunctionJsonPathRead(responseBody,"$..type");
 
         Assert.assertFalse(values.contains("BANK"));
         Assert.assertTrue(values.contains("BANK_BRANCH"));
@@ -340,7 +337,7 @@ public class DadataSuggestionsBank {
         Assert.assertFalse(values.contains("OTHER"));
     }
 
-    @Test
+    @Test(description = "Request with lower case bank type in body")
     public void DadataSuggesstionsBank_BankTypeLowCase(){
         requestBody="{\n" +
                 "    \"query\": \"банк\", \n" +
@@ -350,8 +347,7 @@ public class DadataSuggestionsBank {
 
         responseBody=FunctionDadataSuggBank(requestBody,200);
 
-        jsonBody=responseBody.asString();
-        ArrayList<String> values=JsonPath.read(jsonBody,"$..type");
+        values=FunctionJsonPathRead(responseBody,"$..type");
 
         Assert.assertFalse(values.contains("BANK"));
         Assert.assertTrue(values.contains("BANK_BRANCH"));
@@ -360,7 +356,7 @@ public class DadataSuggestionsBank {
         Assert.assertFalse(values.contains("OTHER"));
     }
 
-    @Test
+    @Test(description = "Request with incorrect bank type")
     public void DadataSuggesstionsBank_IncBankType(){
         requestBody="{\n" +
                 "    \"query\": \"банк\", \n" +
@@ -371,7 +367,7 @@ public class DadataSuggestionsBank {
         responseBody=FunctionDadataSuggBank(requestBody,400);
     }
 
-    @Test
+    @Test(description = "Request with empty bank type in body")
     public void DadataSuggesstionsBank_EmptyBankType(){
         requestBody="{\n" +
                 "    \"query\": \"банк\", \n" +
@@ -384,7 +380,7 @@ public class DadataSuggestionsBank {
         Assert.assertNull(responseBody.jsonPath().getString("suggestions[0]"));
     }
 
-    @Test
+    @Test(description = "Request with location boost in body")
     public void DadataSuggestions_BankBoost(){
         requestBody="{\n" +
                 "        \"query\": \"альфа\",\n" +
@@ -398,7 +394,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("").contains("ХАБАРОВСКИЙ"));
     }
 
-    @Test
+    @Test(description = "Request with not full location boost in body")
     public void DadataSuggestions_BankBoostNotFull(){
         requestBody="{\n" +
                 "        \"query\": \"альфа\",\n" +
@@ -412,7 +408,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("").contains("ХАБАРОВСКИЙ"));
     }
 
-    @Test
+    @Test(description = "Request with incorrect location boost in body")
     public void DadataSuggestions_BankBoostInc(){
         requestBody="{\n" +
                 "        \"query\": \"альфа\",\n" +
@@ -426,7 +422,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("").contains("ХАБАРОВСКИЙ"));
     }
 
-    @Test
+    @Test(description = "Request with empty location boost in body")
     public void DadataSuggestions_EmptyBankBoost(){
         requestBody="{\n" +
                 "        \"query\": \"альфа\",\n" +
@@ -440,7 +436,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("").contains("ХАБАРОВСКИЙ"));
     }
 
-    @Test
+    @Test(description = "Request with bank location in body")
     public void DadataSuggestions_BankLocation(){
         requestBody="{\n" +
                 "    \"query\": \"про\",\n" +
@@ -454,7 +450,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("").contains("ПроКоммерцБанк"));
     }
 
-    @Test
+    @Test(description = "Request with not full bank location in body")
     public void DadataSuggestions_BankLocationNotFull(){
         requestBody="{\n" +
                 "    \"query\": \"про\",\n" +
@@ -468,7 +464,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("").contains("ПроКоммерцБанк"));
     }
 
-    @Test
+    @Test(description = "Request with incorrect bank location in body")
     public void DadataSuggestions_IncBankLocation(){
         requestBody="{\n" +
                 "    \"query\": \"про\",\n" +
@@ -482,7 +478,7 @@ public class DadataSuggestionsBank {
         Assert.assertTrue(responseBody.jsonPath().getString("").contains("ПроКоммерцБанк"));
     }
 
-    @Test
+    @Test(description = "Request with null bank location in body")
     public void DadataSuggestions_NullBankLocation(){
         requestBody="{\n" +
                 "    \"query\": \"про\",\n" +
